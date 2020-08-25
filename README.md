@@ -14,3 +14,4 @@ This is a repository containing inital code for React Hooks tutorial. Demo appli
 
 ## Todo:
 * Convert this application to functional components using hooks.
+* this is note taking app for simple day saver all notes in stored in localstorage 
