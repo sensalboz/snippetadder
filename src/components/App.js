@@ -1,20 +1,22 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
 
-import ResourceList from './ResourceList';
+import Input from "./inputs/input";
+import Container from "./container/container";
 
-class App extends React.Component {
-  state = {
-    resourceName: 'posts'
-  }
+const App = () => {
+  const [data, setData] = useState([]);
 
-  render() {
-    return (
-      <React.Fragment>
-        <button onClick={() => this.setState({ resourceName: 'posts' })}>Posts</button>
-        <button onClick={() => this.setState({ resourceName: 'todos' })}>Todos</button>
-        <ResourceList resourceName={this.state.resourceName}/>
-      </React.Fragment>
-    )
-  }
-}
+  const handleFromApp = async (term) => {
+    await setData([...data, term]);
+    await localStorage.setItem("data", JSON.stringify(data));
+  };
+
+  return (
+    <div>
+      <Input handleFromApp={handleFromApp} />
+      <Container />
+    </div>
+  );
+};
+
 export default App;
