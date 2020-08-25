@@ -1,19 +1,19 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Input from "./components/input";
+import Container from "./components/container";
 
 const App = () => {
-  const fetch = async () => {
-    const data = await localStorage.getItem("data");
-    console.log(data);
-    const rendered = JSON.parse(data);
-    console.log(rendered);
-  };
+  const [data, setData] = useState([]);
 
-  fetch();
+  const handleTerm = async (term) => {
+    setData([...data, term]);
+    await localStorage.setItem("input value", JSON.stringify(data));
+  };
 
   return (
     <div>
-      <Input />
+      <Input handleTerm={handleTerm} />
+      <Container />
     </div>
   );
 };
